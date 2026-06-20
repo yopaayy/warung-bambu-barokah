@@ -132,7 +132,7 @@ export default function ReservasiPage() {
     if (!isStepValid(3)) return;
 
     // Client-Side Cooldown Check
-    const lastReservationStr = localStorage.getItem("wbb_last_reservation");
+    const lastReservationStr = localStorage.getItem(`${SITE_CONFIG.namaAkronim.toLowerCase()}_last_reservation`);
     if (lastReservationStr) {
       const lastResTime = parseInt(lastReservationStr, 10);
       const COOLDOWN_MS = 5 * 60 * 1000; // 5 menit
@@ -169,7 +169,7 @@ export default function ReservasiPage() {
 
       // Berhasil
       setBookingId(data.bookingId);
-      localStorage.setItem("wbb_last_reservation", Date.now().toString());
+      localStorage.setItem(`${SITE_CONFIG.namaAkronim.toLowerCase()}_last_reservation`, Date.now().toString());
       setIsSubmitted(true);
     } catch (err) {
       setErrorMessage("Terjadi kesalahan jaringan. Periksa koneksi Anda.");
@@ -180,7 +180,7 @@ export default function ReservasiPage() {
 
   // Pre-filled WhatsApp string helper
   const getWhatsAppLink = () => {
-    const text = `Halo Admin Warung Bambu Barokah!\n\nSaya telah melakukan reservasi meja online melalui DXP Platform.\n\n*Detail Reservasi:*\n- *Booking ID:* ${bookingId}\n- *Nama:* ${guestDetails.name}\n- *Telepon:* ${guestDetails.phone}\n- *Tanggal:* ${date}\n- *Waktu:* ${chosenTimeSlotObj?.time} (${chosenTimeSlotObj?.label})\n- *Jumlah Tamu:* ${guestCount} Orang\n- *Area:* ${chosenAreaObj?.nama}\n- *Nomor Meja:* Meja ${chosenTableObj?.num}\n- *Catatan:* ${guestDetails.notes || "-"}\n\nMohon konfirmasi pesanan saya. Terima kasih!`;
+    const text = `Halo Admin ${SITE_CONFIG.nama}!\n\nSaya telah melakukan reservasi meja online melalui DXP Platform.\n\n*Detail Reservasi:*\n- *Booking ID:* ${bookingId}\n- *Nama:* ${guestDetails.name}\n- *Telepon:* ${guestDetails.phone}\n- *Tanggal:* ${date}\n- *Waktu:* ${chosenTimeSlotObj?.time} (${chosenTimeSlotObj?.label})\n- *Jumlah Tamu:* ${guestCount} Orang\n- *Area:* ${chosenAreaObj?.nama}\n- *Nomor Meja:* Meja ${chosenTableObj?.num}\n- *Catatan:* ${guestDetails.notes || "-"}\n\nMohon konfirmasi pesanan saya. Terima kasih!`;
     return `https://wa.me/${SITE_CONFIG.whatsapp}?text=${encodeURIComponent(text)}`;
   };
 
@@ -206,7 +206,7 @@ export default function ReservasiPage() {
             </h2>
 
             <p className="text-sm text-text-tertiary mb-6 leading-relaxed">
-              Reservasi meja Anda telah tercatat dalam sistem DXP Warung Bambu Barokah. Silakan kirimkan konfirmasi di bawah ke WhatsApp admin kami untuk mendapatkan update status reservasi secara langsung.
+              Reservasi meja Anda telah tercatat dalam sistem DXP {SITE_CONFIG.nama}. Silakan kirimkan konfirmasi di bawah ke WhatsApp admin kami untuk mendapatkan update status reservasi secara langsung.
             </p>
 
             {/* Booking Summary Box */}
@@ -734,7 +734,7 @@ export default function ReservasiPage() {
                 <AlertCircle size={16} className="shrink-0 text-amber-600 mt-0.5" />
                 <div>
                   <span className="font-bold block mb-0.5">Informasi Penting</span>
-                  Reservasi meja di Warung Bambu Barokah bersifat **GRATIS** dan tanpa biaya pemesanan meja. Meja akan disimpan maksimal selama 30 menit dari sesi kedatangan yang ditentukan.
+                  Reservasi meja di {SITE_CONFIG.nama} bersifat **GRATIS** dan tanpa biaya pemesanan meja. Meja akan disimpan maksimal selama 30 menit dari sesi kedatangan yang ditentukan.
                 </div>
               </div>
             </div>

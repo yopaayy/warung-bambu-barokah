@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Phone, ChevronRight, Sparkles } from "lucide-react";
 import { NAVIGASI, NAVIGASI_CTA, SITE_CONFIG } from "@/lib/data";
+import { BRAND_ASSETS } from "@/lib/assets";
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -62,8 +63,8 @@ export default function Navbar() {
             <Link href="/" className="flex items-center gap-2 xl:gap-3 no-underline group shrink-0" id="logo-wbb">
               <div className="w-10 h-10 xl:w-14 xl:h-14 relative flex items-center justify-center transition-transform duration-300 group-hover:scale-105 drop-shadow-sm rounded-full overflow-hidden border-2 border-wbb-primary/10 bg-white">
               <img 
-                src="/logo_wbb.svg" 
-                alt="Logo WBB" 
+                src={BRAND_ASSETS.logo} 
+                alt={`Logo ${SITE_CONFIG.namaAkronim}`} 
                 className="w-full h-full object-cover" 
               />
             </div>

@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
+import { SITE_CONFIG } from "@/lib/data";
 
 // Skema validasi Zod untuk mencegah input berbahaya (XSS, SQLi, tipe data salah)
 const reservasiSchema = z.object({
@@ -67,7 +68,7 @@ export async function POST(req: Request) {
     }
 
     // 5. Generate Booking ID Server-Side (Lebih aman dari manipulasi client)
-    const bookingId = "WBB-" + Math.floor(10000 + Math.random() * 90000);
+    const bookingId = `${SITE_CONFIG.namaAkronim}-` + Math.floor(10000 + Math.random() * 90000);
 
     // TODO (Opsional): Simpan ke Database (Prisma/Supabase) di sini
 

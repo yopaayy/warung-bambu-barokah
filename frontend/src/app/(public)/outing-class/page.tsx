@@ -15,6 +15,7 @@ import {
 } from "lucide-react";
 import AnimateOnView from "@/components/ui/AnimateOnView";
 import { SITE_CONFIG, formatRupiah } from "@/lib/data";
+import { OUTING_CLASS_ASSETS } from "@/lib/assets";
 import Fireflies from "@/components/ui/Fireflies";
 
 const FASILITAS = [
@@ -41,7 +42,7 @@ const GALERI_KESERUAN = [
 export default function OutingClassPage() {
   const hargaPerPax = 65000;
   
-  const pesanWaText = `Halo Admin WBB! Saya tertarik dengan Paket Edukasi Outing Class (Taman Lalu Lintas) seharga Rp 65.000/pax. Mohon informasi ketersediaan tanggalnya.`;
+  const pesanWaText = `Halo Admin ${SITE_CONFIG.namaAkronim}! Saya tertarik dengan Paket Edukasi Outing Class (Taman Lalu Lintas) seharga Rp 65.000/pax. Mohon informasi ketersediaan tanggalnya.`;
 
   return (
     <div className="min-h-screen bg-background pt-20 pb-20">
@@ -55,7 +56,7 @@ export default function OutingClassPage() {
         <div 
           className="absolute inset-0 z-0"
           style={{
-            backgroundImage: "url('/images/outing-class/outing-class-main-head-background.png')",
+            backgroundImage: `url('${OUTING_CLASS_ASSETS.mainBackground}')`,
             backgroundSize: "cover",
             backgroundPosition: "center top",
             opacity: 0.8
@@ -67,7 +68,7 @@ export default function OutingClassPage() {
         <Fireflies count={25} />
 
         <div className="container mx-auto px-6 py-20 relative z-20 flex flex-col items-center justify-center text-center">
-          <AnimateOnView animation="fade-up">
+          <AnimateOnView direction="up">
             <div 
               className="bg-black/50 backdrop-blur-md border border-white/20 p-8 md:p-14 rounded-[2rem] shadow-2xl max-w-4xl mx-auto flex flex-col items-center relative overflow-hidden animate-float"
               style={{ willChange: "transform" }}
@@ -100,7 +101,7 @@ export default function OutingClassPage() {
                 className="text-base md:text-xl mb-10 drop-shadow-lg font-medium max-w-2xl leading-relaxed"
                 style={{ color: "#f8f9fa", textShadow: "0px 2px 4px rgba(0,0,0,0.8)" }}
               >
-                Belajar sambil bermain di Warung Bambu Barokah. Hadirkan pengalaman edukasi luar ruang yang interaktif, aman, dan tak terlupakan untuk anak-anak didik Anda!
+                Belajar sambil bermain di {SITE_CONFIG.nama}. Hadirkan pengalaman edukasi luar ruang yang interaktif, aman, dan tak terlupakan untuk anak-anak didik Anda!
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
@@ -133,7 +134,7 @@ export default function OutingClassPage() {
             
             {/* Left Column: Pricing Card */}
             <div className="w-full lg:w-1/3">
-              <AnimateOnView animation="slide-right">
+              <AnimateOnView direction="right">
                 <div className="bg-white rounded-3xl p-8 border border-outline-light shadow-2xl relative overflow-hidden">
                   <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-primary to-accent" />
                   
@@ -178,7 +179,7 @@ export default function OutingClassPage() {
 
             {/* Right Column: Facilities Grid */}
             <div className="w-full lg:w-2/3">
-              <AnimateOnView animation="fade-up">
+              <AnimateOnView direction="up">
                 <div className="mb-10">
                   <span className="text-accent font-bold tracking-widest uppercase text-sm mb-2 block">
                     Fasilitas & Kegiatan
@@ -191,7 +192,7 @@ export default function OutingClassPage() {
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {FASILITAS.map((fasilitas, idx) => (
-                  <AnimateOnView key={idx} animation="fade-up" delay={idx * 0.1}>
+                  <AnimateOnView key={idx} direction="up" delay={idx * 0.1}>
                     <div className="bg-surface-container rounded-2xl p-6 hover:bg-white hover:shadow-lg transition-all duration-300 border border-transparent hover:border-outline-light group h-full">
                       <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-4 transition-transform group-hover:scale-110 group-hover:-rotate-3" style={{ background: "rgba(158, 196, 106, 0.2)", color: "var(--primary)" }}>
                         <fasilitas.ikon size={24} />
@@ -211,13 +212,13 @@ export default function OutingClassPage() {
       {/* Gallery Section */}
       <section className="py-20 bg-surface-container mt-12">
         <div className="container mx-auto px-6">
-          <AnimateOnView animation="fade-up">
+          <AnimateOnView direction="up">
             <div className="text-center max-w-2xl mx-auto mb-12">
               <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4" style={{ fontFamily: "var(--font-heading)" }}>
                 Keseruan Outing Class
               </h2>
               <p className="text-text-secondary">
-                Intip momen-momen seru anak-anak saat bermain dan belajar di area Taman Lalu Lintas Warung Bambu Barokah.
+                Intip momen-momen seru anak-anak saat bermain dan belajar di area Taman Lalu Lintas {SITE_CONFIG.nama}.
               </p>
             </div>
           </AnimateOnView>
@@ -225,7 +226,7 @@ export default function OutingClassPage() {
           {/* Interactive Card Gallery */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {GALERI_KESERUAN.map((item, idx) => (
-              <AnimateOnView key={idx} animation="fade-up" delay={idx * 0.1}>
+              <AnimateOnView key={idx} direction="up" delay={idx * 0.1}>
                 <motion.div 
                   className="bg-white rounded-[2rem] p-3 shadow-sm hover:shadow-2xl transition-shadow duration-300 border border-outline-light group h-full flex flex-col"
                   whileHover={{ y: -8, rotate: idx % 2 === 0 ? 1 : -1 }}
@@ -233,7 +234,7 @@ export default function OutingClassPage() {
                 >
                   <div className="rounded-3xl overflow-hidden aspect-square bg-surface-container relative mb-4">
                     <img 
-                      src={`/images/outing-class/outing-class-${item.img}.png`} 
+                      src={OUTING_CLASS_ASSETS.gallery[item.img - 1]} 
                       alt={`Dokumentasi ${item.judul}`}
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                       loading="lazy"

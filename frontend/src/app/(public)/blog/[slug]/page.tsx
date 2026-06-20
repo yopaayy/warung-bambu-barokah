@@ -1,16 +1,16 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { BLOG_POSTS, BLOG_KATEGORI } from "@/lib/data";
+import { BLOG_POSTS, BLOG_KATEGORI, SITE_CONFIG } from "@/lib/data";
 
 // Generate metadata for SEO
 export async function generateMetadata(props: { params: Promise<{ slug: string }> }) {
   const params = await props.params;
   const post = BLOG_POSTS.find((p) => p.slug === params.slug);
   
-  if (!post) return { title: "Artikel Tidak Ditemukan - Warung Bambu Barokah" };
+  if (!post) return { title: `Artikel Tidak Ditemukan - ${SITE_CONFIG.nama}` };
   
   return {
-    title: `${post.judul} - Blog Warung Bambu Barokah`,
+    title: `${post.judul} - Blog ${SITE_CONFIG.nama}`,
     description: post.ringkasan,
     openGraph: {
       title: post.judul,
@@ -118,24 +118,24 @@ export default async function BlogPostPage(props: { params: Promise<{ slug: stri
           
           {/* Dummy Rich Content to make it engaging */}
           <div className="bg-wbb-surface-container-low p-8 rounded-2xl border-l-4 border-wbb-primary my-10">
-            <h3 className="text-2xl mt-0 mb-4 font-bold">✨ Highlights WBB</h3>
+            <h3 className="text-2xl mt-0 mb-4 font-bold">✨ Highlights {SITE_CONFIG.namaAkronim}</h3>
             <p className="m-0 text-wbb-on-surface-variant">
-              Tahukah Anda? Warung Bambu Barokah didesain sepenuhnya menggunakan material ramah lingkungan dengan mempertahankan arsitektur bambu khas Nusantara untuk memberikan pengalaman "Eco-Luxury" yang sesungguhnya.
+              Tahukah Anda? {SITE_CONFIG.nama} didesain sepenuhnya menggunakan material ramah lingkungan dengan mempertahankan arsitektur bambu khas Nusantara untuk memberikan pengalaman "Eco-Luxury" yang sesungguhnya.
             </p>
           </div>
 
           <h2>Menjelajahi Lebih Dalam</h2>
           <p>
-            Warung Bambu Barokah (WBB) terus berinovasi untuk memberikan pengalaman terbaik. Bukan hanya tentang rasa, tetapi tentang cerita di balik setiap sajian. Setiap bahan dipilih dengan teliti dari petani lokal Blitar untuk memastikan kesegaran dan mendukung ekonomi masyarakat sekitar.
+            {SITE_CONFIG.nama} ({SITE_CONFIG.namaAkronim}) terus berinovasi untuk memberikan pengalaman terbaik. Bukan hanya tentang rasa, tetapi tentang cerita di balik setiap sajian. Setiap bahan dipilih dengan teliti dari petani lokal Blitar untuk memastikan kesegaran dan mendukung ekonomi masyarakat sekitar.
           </p>
 
           <img 
             src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=800&h=400&fit=crop" 
-            alt="Suasana WBB" 
+            alt={`Suasana ${SITE_CONFIG.namaAkronim}`} 
             className="my-10 shadow-lg"
           />
 
-          <h2>Kenapa Memilih WBB?</h2>
+          <h2>Kenapa Memilih {SITE_CONFIG.namaAkronim}?</h2>
           <ul>
             <li><strong>Suasana Alam:</strong> Dikelilingi rimbunnya bambu dan suara gemericik air kolam koi.</li>
             <li><strong>Fasilitas Lengkap:</strong> Mulai dari VIP Room hingga Taman Lalu Lintas untuk edukasi anak.</li>
@@ -143,7 +143,7 @@ export default async function BlogPostPage(props: { params: Promise<{ slug: stri
           </ul>
 
           <p>
-            Kami selalu menantikan kehadiran Anda dan keluarga untuk mengukir momen indah bersama di Warung Bambu Barokah. Jangan ragu untuk melakukan reservasi terlebih dahulu agar mendapatkan spot terbaik!
+            Kami selalu menantikan kehadiran Anda dan keluarga untuk mengukir momen indah bersama di {SITE_CONFIG.nama}. Jangan ragu untuk melakukan reservasi terlebih dahulu agar mendapatkan spot terbaik!
           </p>
         </div>
 

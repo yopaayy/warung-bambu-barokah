@@ -15,6 +15,8 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import Fireflies from "@/components/ui/Fireflies";
+import { SITE_CONFIG } from "@/lib/data";
+import { OUTING_CLASS_ASSETS } from "@/lib/assets";
 
 export default function TentangKamiPage() {
   const misiItems = [
@@ -39,8 +41,8 @@ export default function TentangKamiPage() {
           className="absolute inset-0 z-0"
         >
           <img 
-            src="/images/outing-class/outing-class-main-head-background.png" 
-            alt="Warung Bambu Barokah Background" 
+            src={OUTING_CLASS_ASSETS.mainBackground} 
+            alt={`${SITE_CONFIG.nama} Background`} 
             className="w-full h-full object-cover opacity-40"
           />
           {/* Made gradient darker to ensure white text pops */}
@@ -63,7 +65,7 @@ export default function TentangKamiPage() {
         </div>
 
         <div className="container mx-auto px-6 relative z-10 text-center flex flex-col items-center">
-          <AnimateOnView animation="fade-up">
+          <AnimateOnView direction="up">
             {/* Elegant Glass Box Container */}
             <div className="bg-white/5 backdrop-blur-xl border border-white/20 p-10 md:p-16 rounded-[3rem] shadow-2xl relative overflow-hidden group">
               <div className="absolute -inset-full bg-gradient-to-r from-transparent via-white/10 to-transparent group-hover:animate-[shimmer_2s_infinite] -skew-x-12" />
@@ -83,7 +85,7 @@ export default function TentangKamiPage() {
                 className="font-montserrat text-lg md:text-2xl max-w-3xl mx-auto font-light leading-relaxed relative z-10"
                 style={{ color: "#f8f9fa", textShadow: "0px 2px 10px rgba(0,0,0,0.8)" }}
               >
-                Warung Bambu Barokah
+                {SITE_CONFIG.nama}
               </p>
             </div>
           </AnimateOnView>
@@ -125,19 +127,19 @@ export default function TentangKamiPage() {
                 
                 <div className="prose prose-lg text-wbb-on-surface-variant font-montserrat leading-relaxed">
                   <p>
-                    <strong>Warung Bambu Barokah (WBB)</strong> menyajikan menu produk yang memiliki ciri khas dan memberikan kesan penuh makna <strong>RASA SUASANA ISTIMEWA</strong>.
+                    <strong>{SITE_CONFIG.nama} ({SITE_CONFIG.namaAkronim})</strong> menyajikan menu produk yang memiliki ciri khas dan memberikan kesan penuh makna <strong>RASA SUASANA ISTIMEWA</strong>.
                   </p>
                   <p>
-                    WBB diciptakan dengan suasana alam yang sejuk, asri, ditata estetik, didukung dengan kolam ikan yang luas. Venue pengunjung dibuat di atas kolam ikan berupa gazebo, diiringi suara gemericik air yang memberikan harmoni kenyamanan.
+                    {SITE_CONFIG.namaAkronim} diciptakan dengan suasana alam yang sejuk, asri, ditata estetik, didukung dengan kolam ikan yang luas. Venue pengunjung dibuat di atas kolam ikan berupa gazebo, diiringi suara gemericik air yang memberikan harmoni kenyamanan.
                   </p>
                   <p>
-                    Hal inilah yang menjadikan WBB memiliki daya tarik tersendiri—sebuah destinasi yang layak untuk dijadikan tempat persinggahan, tempat bersantai, tempat berkegiatan, maupun tempat mencari inspirasi dan motivasi diri.
+                    Hal inilah yang menjadikan {SITE_CONFIG.namaAkronim} memiliki daya tarik tersendiri—sebuah destinasi yang layak untuk dijadikan tempat persinggahan, tempat bersantai, tempat berkegiatan, maupun tempat mencari inspirasi dan motivasi diri.
                   </p>
                 </div>
 
                 <div className="bg-wbb-surface-container p-6 rounded-2xl border-l-4 border-wbb-secondary shadow-sm">
                   <p className="font-playfair text-wbb-primary text-xl italic font-semibold">
-                    "BELUM KE BLITAR KALAU BELUM KE WBB."
+                    "BELUM KE BLITAR KALAU BELUM KE {SITE_CONFIG.namaAkronim}."
                   </p>
                 </div>
               </div>
@@ -154,7 +156,7 @@ export default function TentangKamiPage() {
                   </div>
                   <h3 className="font-playfair text-xl font-bold text-wbb-primary mb-3">Sertifikasi Halal</h3>
                   <p className="font-montserrat text-sm text-wbb-on-surface-variant leading-relaxed">
-                    Semua menu di WBB memiliki Sertifikasi Halal Resmi (No. ID35210038799460126), menjunjung tinggi komitmen kualitas dan rasa aman bagi pelanggan.
+                    Semua menu di {SITE_CONFIG.namaAkronim} memiliki Sertifikasi Halal Resmi (No. ID35210038799460126), menjunjung tinggi komitmen kualitas dan rasa aman bagi pelanggan.
                   </p>
                 </div>
 
@@ -215,7 +217,7 @@ export default function TentangKamiPage() {
                 
                 <div className="relative z-10">
                   <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-wbb-secondary/20 border border-wbb-secondary/30 text-white text-sm font-bold tracking-widest uppercase mb-8 shadow-sm">
-                    Visi WBB
+                    Visi {SITE_CONFIG.namaAkronim}
                   </div>
                   <h3 
                     className="font-playfair text-3xl font-bold mb-6 leading-relaxed"
@@ -237,7 +239,7 @@ export default function TentangKamiPage() {
             <AnimateOnView direction="up" delay={0.2} className="lg:col-span-7">
               <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-[2.5rem] p-10 md:p-14 h-full shadow-2xl relative overflow-hidden group hover:shadow-[0_0_40px_rgba(255,255,255,0.05)] hover:-translate-y-2 transition-all duration-500">
                 <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 text-white text-sm font-bold tracking-widest uppercase mb-8 shadow-sm">
-                  Misi WBB
+                  Misi {SITE_CONFIG.namaAkronim}
                 </div>
                 
                 <div className="space-y-6">
@@ -272,13 +274,13 @@ export default function TentangKamiPage() {
       {/* Kolaborasi / Closing Section */}
       <section className="py-24 bg-wbb-surface-container">
         <div className="container mx-auto px-6 text-center max-w-4xl">
-          <AnimateOnView animation="scale">
+          <AnimateOnView direction="scale">
             <Users size={48} className="mx-auto text-wbb-secondary mb-6 opacity-80" />
             <h2 className="font-playfair text-wbb-primary text-3xl md:text-4xl font-bold mb-6">
               Kemitraan & Kolaborasi
             </h2>
             <p className="font-montserrat text-wbb-on-surface-variant text-lg leading-relaxed mb-12">
-              Kolaborasi WBB dengan pegiat wisata memberikan pelayanan terbaik, berbagai fasilitas dan kontribusi yang mengedepankan <span className="font-bold text-wbb-primary italic">win-win solution concept</span>.
+              Kolaborasi {SITE_CONFIG.namaAkronim} dengan pegiat wisata memberikan pelayanan terbaik, berbagai fasilitas dan kontribusi yang mengedepankan <span className="font-bold text-wbb-primary italic">win-win solution concept</span>.
             </p>
             
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">

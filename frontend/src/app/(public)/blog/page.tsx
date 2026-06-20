@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import AnimateOnView from "@/components/ui/AnimateOnView";
-import { BLOG_POSTS, BLOG_KATEGORI } from "@/lib/data";
+import { BLOG_POSTS, BLOG_KATEGORI, SITE_CONFIG } from "@/lib/data";
 import Fireflies from "@/components/ui/Fireflies";
 
 export default function BlogPage() {
@@ -48,7 +48,7 @@ export default function BlogPage() {
               Blog & Informasi
             </h1>
             <p className="font-montserrat text-wbb-on-surface-variant text-lg">
-              Temukan berbagai artikel menarik seputar kuliner, wisata Blitar, edukasi anak, dan event terbaru di Warung Bambu Barokah.
+              Temukan berbagai artikel menarik seputar kuliner, wisata Blitar, edukasi anak, dan event terbaru di {SITE_CONFIG.nama}.
             </p>
           </div>
         </AnimateOnView>

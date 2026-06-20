@@ -11,6 +11,7 @@ import {
   ChevronRight,
 } from "lucide-react";
 import { SITE_CONFIG, NAVIGASI } from "@/lib/data";
+import { BRAND_ASSETS } from "@/lib/assets";
 
 export default function Footer() {
   const tahunSekarang = new Date().getFullYear();
@@ -31,8 +32,8 @@ export default function Footer() {
             <div className="flex items-center gap-3 mb-5">
               <div className="w-14 h-14 relative flex items-center justify-center bg-white rounded-full overflow-hidden border-2 border-white/20 shadow-lg">
                 <img 
-                  src="/logo_wbb.svg" 
-                  alt="Logo WBB" 
+                  src={BRAND_ASSETS.logo} 
+                  alt={`Logo ${SITE_CONFIG.namaAkronim}`} 
                   className="w-full h-full object-cover" 
                 />
               </div>

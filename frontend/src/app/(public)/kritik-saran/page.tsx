@@ -5,6 +5,7 @@ import AnimateOnView from "@/components/ui/AnimateOnView";
 import { MessageSquareHeart, Send, Sparkles, Star, Megaphone } from "lucide-react";
 import Link from "next/link";
 import Fireflies from "@/components/ui/Fireflies";
+import { SITE_CONFIG } from "@/lib/data";
 
 export default function KritikSaranPage() {
   const GOOGLE_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSeYhtj3_LBDpKsTfU6RnYNQCR5NY0azXL5BfCDxiz061fbdNQ/viewform";
@@ -35,7 +36,7 @@ export default function KritikSaranPage() {
       <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-3xl mx-auto">
           
-          <AnimateOnView animation="fade-up">
+          <AnimateOnView direction="up">
             <div className="text-center mb-10">
               <div className="inline-flex items-center justify-center p-4 rounded-full bg-wbb-surface-container-highest shadow-inner mb-6 relative">
                 <motion.div 
@@ -50,7 +51,7 @@ export default function KritikSaranPage() {
                 Suara Anda, <br className="hidden md:block"/> Motivasi Kami
               </h1>
               <p className="font-montserrat text-wbb-on-surface-variant text-lg md:text-xl leading-relaxed">
-                Kami sangat menghargai setiap masukan dan kritik yang membangun demi meningkatkan kualitas pelayanan <span className="font-bold text-wbb-primary">Warung Bambu Barokah</span>.
+                Kami sangat menghargai setiap masukan dan kritik yang membangun demi meningkatkan kualitas pelayanan <span className="font-bold text-wbb-primary">{SITE_CONFIG.nama}</span>.
               </p>
             </div>
           </AnimateOnView>

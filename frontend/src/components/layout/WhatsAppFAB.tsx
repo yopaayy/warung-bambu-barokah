@@ -22,7 +22,7 @@ export default function WhatsAppFAB() {
   }, [isVisible]);
 
   const waUrl = `https://wa.me/${SITE_CONFIG.whatsapp}?text=${encodeURIComponent(
-    "Halo Warung Bambu Barokah! Saya ingin bertanya tentang..."
+    `Halo ${SITE_CONFIG.nama}! Saya ingin bertanya tentang...`
   )}`;
 
   return (

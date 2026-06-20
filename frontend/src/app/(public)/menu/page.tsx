@@ -30,6 +30,7 @@ import {
   formatRupiah,
   SITE_CONFIG,
 } from "@/lib/data";
+import { BRAND_ASSETS } from "@/lib/assets";
 
 export interface AiMenuItem extends MenuItem {
   alasan?: string;
@@ -144,7 +145,7 @@ export default function MenuPage() {
         <div 
           className="absolute inset-0 z-0 opacity-10 mix-blend-overlay"
           style={{
-            backgroundImage: "url('/WBB.svg')",
+            backgroundImage: `url('${BRAND_ASSETS.logo}')`,
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
@@ -168,7 +169,7 @@ export default function MenuPage() {
         <Fireflies count={25} />
 
         <div className="container mx-auto px-6 text-center relative z-10">
-          <AnimateOnView animation="fade-up" delay={0.1}>
+          <AnimateOnView direction="up" delay={0.1}>
             <span 
               className="inline-flex items-center gap-2 px-5 py-2 rounded-full mb-6" 
               style={{ 
@@ -183,7 +184,7 @@ export default function MenuPage() {
             </span>
           </AnimateOnView>
 
-          <AnimateOnView animation="fade-up" delay={0.2}>
+          <AnimateOnView direction="up" delay={0.2}>
             <h1 
               className="text-4xl md:text-5xl font-black mb-6" 
               style={{ 
@@ -196,7 +197,7 @@ export default function MenuPage() {
             </h1>
           </AnimateOnView>
 
-          <AnimateOnView animation="fade-up" delay={0.3}>
+          <AnimateOnView direction="up" delay={0.3}>
             <p 
               className="max-w-2xl mx-auto text-base md:text-lg leading-relaxed font-medium"
               style={{ 
@@ -379,7 +380,7 @@ export default function MenuPage() {
             <div className="flex items-center gap-2 mb-4">
               <Bot size={22} className="text-premium" />
               <h3 className="text-md font-bold text-primary" style={{ fontFamily: "var(--font-heading)" }}>
-                Asisten AI WBB
+                Asisten AI {SITE_CONFIG.namaAkronim}
               </h3>
             </div>
             
@@ -452,7 +453,7 @@ export default function MenuPage() {
                   </div>
                   <div>
                     <h3 className="text-lg font-bold text-primary" style={{ fontFamily: "var(--font-heading)" }}>
-                      Asisten AI WBB
+                      Asisten AI {SITE_CONFIG.namaAkronim}
                     </h3>
                     <p className="text-[13px] text-text-tertiary">
                       {isAnalyzing ? 'Menganalisis selera Anda...' : aiParsedContext ? `Rekomendasi untuk ${aiParsedContext.guests} Orang` : 'Menyiapkan rekomendasi...'}
@@ -554,7 +555,7 @@ export default function MenuPage() {
                   onClick={() => {
                     setIsAiHelperOpen(false);
                     // Redirect or pre-fill whatsapp
-                    const text = `Halo Admin WBB! Saya menggunakan asisten AI Rekomendasi Menu dan tertarik memesan: ${aiRecommendation?.map((i) => i.nama).join(", ")}`;
+                    const text = `Halo Admin ${SITE_CONFIG.namaAkronim}! Saya menggunakan asisten AI Rekomendasi Menu dan tertarik memesan: ${aiRecommendation?.map((i) => i.nama).join(", ")}`;
                     window.open(`https://wa.me/${SITE_CONFIG.whatsapp}?text=${encodeURIComponent(text)}`, "_blank");
                   }}
                   className="btn btn-primary btn-sm text-xs font-semibold"
@@ -660,7 +661,7 @@ export default function MenuPage() {
                 <div className="flex gap-3">
                   <button
                     onClick={() => {
-                      const text = `Halo Admin WBB! Saya ingin menanyakan ketersediaan menu "${selectedItem.nama}" atau memesannya untuk reservasi nanti.`;
+                      const text = `Halo Admin ${SITE_CONFIG.namaAkronim}! Saya ingin menanyakan ketersediaan menu "${selectedItem.nama}" atau memesannya untuk reservasi nanti.`;
                       window.open(`https://wa.me/${SITE_CONFIG.whatsapp}?text=${encodeURIComponent(text)}`, "_blank");
                     }}
                     className="btn btn-primary flex-1 text-sm font-semibold"

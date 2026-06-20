@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Playfair_Display, Montserrat } from "next/font/google";
 import "./globals.css";
+import { SITE_CONFIG } from "@/lib/config";
 
 const playfair = Playfair_Display({
   variable: "--font-heading",
@@ -18,37 +19,28 @@ const montserrat = Montserrat({
 
 export const metadata: Metadata = {
   title: {
-    default: "Warung Bambu Barokah — Destinasi Kuliner, Wisata & Edukasi Blitar",
-    template: "%s | Warung Bambu Barokah",
+    default: `${SITE_CONFIG.nama} — Destinasi Kuliner, Wisata & Edukasi`,
+    template: `%s | ${SITE_CONFIG.nama}`,
   },
   description:
-    "Warung Bambu Barokah (WBB) adalah destinasi kuliner, wisata edukasi, dan event gathering keluarga di Blitar. Nikmati pengalaman makan premium dengan konsep Educafe & Resto berkonsep bambu eco-luxury.",
-  keywords: [
-    "warung bambu barokah",
-    "restoran blitar",
-    "wisata kuliner blitar",
-    "educafe blitar",
-    "outing class blitar",
-    "event gathering blitar",
-    "restoran keluarga blitar",
-    "wisata edukasi anak blitar",
-  ],
-  authors: [{ name: "Warung Bambu Barokah" }],
-  creator: "Warung Bambu Barokah",
-  metadataBase: new URL("https://warungbambubarokah.com"),
+    `${SITE_CONFIG.nama} (${SITE_CONFIG.namaAkronim}) adalah destinasi kuliner, wisata edukasi, dan event gathering keluarga. Nikmati pengalaman makan premium dengan konsep ${SITE_CONFIG.tagline} berkonsep bambu eco-luxury.`,
+  keywords: SITE_CONFIG.metaKeywords as unknown as string[],
+  authors: [{ name: SITE_CONFIG.nama }],
+  creator: SITE_CONFIG.nama,
+  metadataBase: new URL(`https://${SITE_CONFIG.domain}`),
   openGraph: {
     type: "website",
     locale: "id_ID",
-    siteName: "Warung Bambu Barokah",
-    title: "Warung Bambu Barokah — Destinasi Kuliner, Wisata & Edukasi Blitar",
+    siteName: SITE_CONFIG.nama,
+    title: `${SITE_CONFIG.nama} — Destinasi Kuliner, Wisata & Edukasi`,
     description:
-      "Nikmati pengalaman makan premium dengan konsep Educafe & Resto berkonsep bambu eco-luxury di Blitar.",
+      `Nikmati pengalaman makan premium dengan konsep ${SITE_CONFIG.tagline} berkonsep bambu eco-luxury.`,
   },
   twitter: {
     card: "summary_large_image",
-    title: "Warung Bambu Barokah — Destinasi Kuliner, Wisata & Edukasi Blitar",
+    title: `${SITE_CONFIG.nama} — Destinasi Kuliner, Wisata & Edukasi`,
     description:
-      "Nikmati pengalaman makan premium dengan konsep Educafe & Resto berkonsep bambu eco-luxury di Blitar.",
+      `Nikmati pengalaman makan premium dengan konsep ${SITE_CONFIG.tagline} berkonsep bambu eco-luxury.`,
   },
   robots: {
     index: true,

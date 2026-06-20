@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import AnimateOnView from "@/components/ui/AnimateOnView";
 import { Search, MapPin, Calendar, Heart } from "lucide-react";
 import Fireflies from "@/components/ui/Fireflies";
+import { SITE_CONFIG } from "@/lib/data";
 
 // Menggunakan aset lokal agar gambar dijamin stabil, resolusi tinggi, dan tidak error/pecah
 const galleryItems = [
@@ -39,7 +40,7 @@ const galleryItems = [
     id: 4, 
     category: "Event", 
     title: "Wedding Outdoor", 
-    desc: "Pernikahan romantis bernuansa alam di area gathering WBB.",
+    desc: `Pernikahan romantis bernuansa alam di area gathering ${SITE_CONFIG.namaAkronim}.`,
     src: "/images/outing-class/outing-class-4.png",
     date: "01 Nov 2024",
     likes: 530
@@ -120,10 +121,10 @@ export default function GaleriPage() {
           <div className="text-center max-w-3xl mx-auto mb-16 relative">
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-1 bg-wbb-secondary rounded-full mb-8"></div>
             <h1 className="font-playfair text-wbb-primary text-4xl md:text-6xl font-bold mt-8 mb-6 tracking-tight">
-              Koleksi Momen WBB
+              Koleksi Momen {SITE_CONFIG.namaAkronim}
             </h1>
             <p className="font-montserrat text-wbb-on-surface-variant text-lg md:text-xl leading-relaxed">
-              Jelajahi visualisasi pengalaman tak terlupakan di Warung Bambu Barokah. Mulai dari kelezatan kuliner premium hingga keseruan wisata edukasi alam.
+              Jelajahi visualisasi pengalaman tak terlupakan di {SITE_CONFIG.nama}. Mulai dari kelezatan kuliner premium hingga keseruan wisata edukasi alam.
             </p>
           </div>
         </AnimateOnView>

@@ -33,6 +33,7 @@ import {
   BLOG_POSTS,
   formatRupiah,
 } from "@/lib/data";
+import { BRAND_ASSETS } from "@/lib/assets";
 
 // === HERO SECTION ===
 function HeroSection() {
@@ -44,7 +45,7 @@ function HeroSection() {
         backgroundImage: `linear-gradient(165deg, 
           rgba(28, 46, 18, 0.95) 0%, 
           rgba(45, 77, 32, 0.85) 50%, 
-          rgba(79, 122, 55, 0.8) 100%), url('/WBB.svg')`,
+          rgba(79, 122, 55, 0.8) 100%), url('${BRAND_ASSETS.logo}')`,
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
@@ -118,7 +119,7 @@ function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
         >
-          Warung Bambu Barokah menghadirkan perpaduan sempurna antara cita rasa autentik Nusantara, 
+          {SITE_CONFIG.nama} menghadirkan perpaduan sempurna antara cita rasa autentik Nusantara, 
           wisata edukasi anak, dan tempat gathering keluarga dengan konsep eco-luxury.
         </motion.p>
 
@@ -210,7 +211,7 @@ function FeaturedMenuSection() {
             <h2>Cita Rasa yang Memanjakan Lidah</h2>
             <p>
               Nikmati hidangan terbaik kami yang diracik dari bahan-bahan segar 
-              pilihan dengan resep khas Warung Bambu Barokah.
+              pilihan dengan resep khas {SITE_CONFIG.nama}.
             </p>
           </div>
         </AnimateOnView>
@@ -428,7 +429,7 @@ function KenapaWBBSection() {
               <Sparkles size={14} />
               Mengapa Kami
             </span>
-            <h2>Kenapa Memilih Warung Bambu Barokah?</h2>
+            <h2>Kenapa Memilih {SITE_CONFIG.nama}?</h2>
             <p>
               Lebih dari sekadar tempat makan — kami adalah destinasi pengalaman keluarga 
               yang menghadirkan kebahagiaan di setiap kunjungan.
@@ -484,7 +485,7 @@ function TestimoniSection() {
             </span>
             <h2>Apa Kata Mereka?</h2>
             <p>
-              Cerita dan kesan dari para pengunjung setia Warung Bambu Barokah 
+              Cerita dan kesan dari para pengunjung setia {SITE_CONFIG.nama}{" "}
               yang telah merasakan pengalaman terbaik bersama kami.
             </p>
           </div>
@@ -561,7 +562,7 @@ function BlogPreviewSection() {
             <h2>Berita & Tips Terbaru</h2>
             <p>
               Ikuti cerita, tips kuliner, dan informasi terbaru seputar 
-              Warung Bambu Barokah dan wisata kuliner Blitar.
+              {SITE_CONFIG.nama} dan wisata kuliner.
             </p>
           </div>
         </AnimateOnView>
@@ -640,7 +641,7 @@ function LokasiSection() {
               {/* Map Container */}
               <div className="w-full lg:flex-1 h-[400px] lg:h-auto min-h-[550px] relative overflow-hidden bg-gray-100">
                 <iframe 
-                  src="https://maps.google.com/maps?q=-8.0571952,112.3043922&hl=id&z=17&output=embed" 
+                  src={`https://maps.google.com/maps?q=${SITE_CONFIG.koordinat.lat},${SITE_CONFIG.koordinat.lng}&hl=id&z=17&output=embed`} 
                   width="100%" 
                   height="100%" 
                   style={{ border: 0 }} 
@@ -659,7 +660,7 @@ function LokasiSection() {
                 <div className="absolute top-0 right-0 w-40 h-40 bg-wbb-primary/5 rounded-full blur-3xl pointer-events-none" />
                 
                 <h3 className="text-[1.75rem] font-bold mb-2 text-wbb-text leading-tight" style={{ fontFamily: "var(--font-heading)" }}>
-                  Warung Bambu Barokah / WBB
+                  {SITE_CONFIG.nama} / {SITE_CONFIG.namaAkronim}
                 </h3>
                 
                 {/* Rating & Categories */}
@@ -684,7 +685,7 @@ function LokasiSection() {
 
                 {/* Action Buttons Row */}
                 <div className="flex items-center gap-3 mb-6 pb-6 border-b border-gray-100">
-                  <a href="https://google.com/maps/place/Warung+Bambu+Barokah/@-8.0571899,112.3018173,17z/data=!3m1!4b1!4m6!3m5!1s0x2e789363137df03f:0xd1414f5eb4ec16d!8m2!3d-8.0571952!4d112.3043922!16s%2Fg%2F11t1rhp521" target="_blank" rel="noopener noreferrer" className="flex-1 flex flex-col items-center gap-2 group cursor-pointer no-underline">
+                  <a href={SITE_CONFIG.googleMaps} target="_blank" rel="noopener noreferrer" className="flex-1 flex flex-col items-center gap-2 group cursor-pointer no-underline">
                     <div className="w-12 h-12 rounded-full bg-blue-600 text-white flex items-center justify-center transition-all duration-300 shadow-md group-hover:shadow-lg group-hover:-translate-y-1">
                       <Navigation size={20} className="fill-white/20" />
                     </div>
@@ -722,7 +723,7 @@ function LokasiSection() {
                   <div className="flex items-start gap-4 group/item cursor-pointer">
                     <MapPin size={20} className="text-wbb-primary mt-0.5 shrink-0 transition-transform group-hover/item:scale-110" />
                     <p className="text-wbb-text text-[14px] leading-relaxed transition-colors group-hover/item:text-wbb-primary">
-                      Dsn. Sukorejo RT1/RW5, Tambakan, Kec. Gandusari, Kabupaten Blitar, Jawa Timur 66187
+                      {SITE_CONFIG.alamat}
                     </p>
                   </div>
                   <div className="flex items-start gap-4 group/item cursor-pointer">
@@ -776,7 +777,7 @@ function CTASection() {
           </h2>
           <p className="text-base md:text-lg max-w-xl mx-auto mb-10" style={{ color: "rgba(255,255,255,0.7)" }}>
             Reservasi meja sekarang atau hubungi kami untuk merencanakan acara spesial Anda 
-            di Warung Bambu Barokah.
+            di {SITE_CONFIG.nama}.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link href="/reservasi" className="btn btn-reservasi btn-lg no-underline group">
@@ -785,7 +786,7 @@ function CTASection() {
               <ChevronRight size={22} className="transition-transform duration-300 group-hover:translate-x-1" />
             </Link>
             <a
-              href={`https://wa.me/${SITE_CONFIG.whatsapp}?text=${encodeURIComponent("Halo WBB! Saya ingin reservasi meja / tanya info.")}`}
+              href={`https://wa.me/${SITE_CONFIG.whatsapp}?text=${encodeURIComponent(`Halo ${SITE_CONFIG.namaAkronim}! Saya ingin reservasi meja / tanya info.`)}`}
               target="_blank"
               rel="noopener noreferrer"
               className="btn btn-lg no-underline"
