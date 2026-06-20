@@ -1,25 +1,43 @@
-# Warung Bambu Barokah (WBB) - DXP Platform
+# Educafe and Resto (ECR) - Enterprise DXP Platform
 
-Selamat datang di repositori resmi **Warung Bambu Barokah (WBB)**! 
-Proyek ini adalah sebuah platform *Digital Experience (DXP)* modern yang dibangun untuk memberikan pengalaman interaktif, elegan, dan profesional bagi pelanggan WBB.
+Selamat datang di repositori resmi **Educafe and Resto (ECR)**! 
+Proyek ini adalah sebuah platform *Digital Experience (DXP)* modern bertaraf *Enterprise* yang dirancang khusus untuk industri Kuliner, Restoran, dan Eduwisata. 
 
-Proyek ini menggunakan **Next.js 14**, **React 19**, dan **Tailwind CSS v4** dengan gaya desain modern, responsif, dan kaya akan animasi (menggunakan Framer Motion).
+Sistem ini dirancang sebagai **White-Label Ready Template**, artinya Anda dapat dengan sangat mudah menjual atau mengkustomisasi platform ini untuk perusahaan lain (hanya dengan mengubah file konfigurasi terpusat).
+
+Proyek ini dibangun menggunakan **Next.js 14 (App Router)**, **React 19**, dan **Tailwind CSS v4** dengan gaya desain premium, super responsif, dan kaya akan *micro-animations* menggunakan **Framer Motion**.
 
 ---
 
-## 🚀 Fitur Utama
-1. **Asisten AI Rekomendasi Menu**: Sistem cerdas yang dapat memberikan rekomendasi menu makanan berdasarkan *budget*, jumlah orang, dan selera pengunjung. Didukung oleh **Google Gemini 2.5 Flash**.
-2. **Sistem Reservasi Multi-Layer Security**: Sistem pemesanan meja interaktif yang kebal terhadap *spam* bot dan serangan DDoS, berkat proteksi In-Memory Rate Limiting, Cloudflare Turnstile Concept, dan perlindungan LocalStorage.
-3. **Menu Interaktif & Galeri HD**: Daftar menu yang dilengkapi modal detail cantik, gambar resolusi tinggi, dan performa pemuatan super cepat.
-4. **Desain Premium & Micro-animations**: Tampilan *UI/UX* yang dirancang khusus agar terlihat mewah (*premium feel*) dengan efek transisi kaca (*glassmorphism*) yang mulus.
+## 🌟 Fitur Unggulan
+
+1. **Arsitektur White-Label (Template-Ready)**: 
+   - **`src/lib/config.ts`**: Seluruh identitas merek (Nama, Akronim, URL, Kontak, Warna Dasar) dipusatkan di sini.
+   - **`src/lib/assets.ts`**: Semua referensi *path* gambar/logo/video dipusatkan. Sangat aman dan mencegah *Path Traversal*.
+   - **`src/lib/data.ts`**: Seluruh konten dinamis (Menu, Artikel Blog, Fasilitas, Testimoni) dibuat dalam bentuk *Array of Objects* sehingga siap untuk dihubungkan ke *Backend API* kapan saja.
+
+2. **Asisten AI Terintegrasi (Google Gemini 2.5 Flash)**: 
+   Sistem cerdas yang memberikan rekomendasi kombinasi menu terbaik berdasarkan *budget* pelanggan, jumlah orang, dan preferensi selera (Tersedia pada halaman Menu).
+
+3. **Sistem Reservasi Multi-Layer Security**: 
+   Sistem pemesanan interaktif yang kebal terhadap *spam* bot dan serangan DDoS:
+   - **Rate Limiting (Backend)** berbasis IP (Maksimal 3 permintaan/jam).
+   - **Zod Validation** untuk mencegah serangan Injeksi SQL atau XSS.
+   - **Cooldown System (Frontend)** menggunakan LocalStorage.
+
+4. **SEO & Kinerja Cepat**:
+   Implementasi JSON-LD Schema untuk artikel Blog, struktur semantic HTML, Metadata otomatis, dan performa *build* berkecepatan tinggi menggunakan *Turbopack*.
+
+5. **Desain Premium & Micro-animations**: 
+   Tampilan UI/UX modern dengan efek *Glassmorphism*, transisi mulus, dan *parallax* yang memberikan sensasi aplikasi web mahal.
 
 ---
 
 ## 💻 Prasyarat (Requirements)
-Sebelum memulai instalasi, pastikan komputer/server Anda telah menginstal perangkat lunak berikut:
-- **Node.js** (Minimal versi v18.17 atau lebih baru)
+Pastikan komputer/server Anda telah menginstal perangkat lunak berikut:
+- **Node.js** (Minimal versi v18.17 LTS atau lebih baru)
 - **npm** (Node Package Manager)
-- **Git** (Opsional, untuk *cloning* repositori)
+- **Git** (Opsional)
 
 ---
 
@@ -40,7 +58,7 @@ Di dalam folder `frontend`, jalankan perintah ini untuk mengunduh semua paket pe
 npm install
 ```
 
-### 3. Konfigurasi Environment Variables (Kunci Rahasia)
+### 3. Konfigurasi Environment Variables (API Keys)
 Anda memerlukan API Key dari **Google AI Studio** agar fitur Asisten AI berfungsi.
 1. Salin file contoh environment:
    ```bash
@@ -53,17 +71,17 @@ Anda memerlukan API Key dari **Google AI Studio** agar fitur Asisten AI berfungs
 
 ---
 
-## 🏃 Cara Menjalankan Aplikasi (Testing)
+## 🏃 Cara Menjalankan Aplikasi
 
 ### Mode Pengembangan Lokal (Development)
-Untuk menguji dan menjalankan aplikasi di komputer Anda secara *live-reload*:
+Untuk menguji dan mengubah-ubah kode aplikasi secara *live-reload*:
 ```bash
 npm run dev
 ```
-Setelah proses selesai, buka browser Anda dan akses: **[http://localhost:3000](http://localhost:3000)**
+Buka browser Anda dan akses: **[http://localhost:3000](http://localhost:3000)**
 
-### Mode Produksi (Deployment)
-Jika Anda ingin menyiapkan aplikasi untuk server publik (seperti Vercel atau VPS):
+### Mode Produksi (Deployment / Vercel)
+Jika Anda ingin menyiapkan aplikasi untuk di-*hosting* ke publik:
 1. Buat versi produksi yang teroptimasi:
    ```bash
    npm run build
@@ -75,12 +93,23 @@ Jika Anda ingin menyiapkan aplikasi untuk server publik (seperti Vercel atau VPS
 
 ---
 
-## 🛡️ Penjelasan Modul Keamanan (Anti-Spam)
-Aplikasi ini sudah dipersenjatai sistem **Anti-Spam Reservasi** dengan 3 perlindungan:
-- **Rate Limiting (Backend):** 1 alamat IP maksimal hanya bisa melakukan 3 kali reservasi dalam kurun waktu 1 jam. Jika melebihi batas, server akan menolak dengan *Error 429 (Too Many Requests)*.
-- **Validasi Zod:** Semua input form disaring secara ketat agar *hacker* tidak bisa memasukkan skrip bahaya (XSS).
-- **Cooldown Browser:** Setelah reservasi berhasil, pengunjung harus menunggu 5 menit sebelum boleh mereservasi lagi dari perangkat yang sama.
+## 📂 Struktur Direktori Utama
+
+```text
+frontend/
+├── public/                # Aset publik statis (gambar statis opsional, logo, dll)
+├── src/
+│   ├── app/               # Next.js App Router (Halaman Utama)
+│   │   ├── (public)/      # Semua halaman publik (Beranda, Menu, Galeri, Blog)
+│   │   └── api/           # API Endpoints internal (AI & Reservasi)
+│   ├── components/        # Komponen React yang dapat digunakan ulang (Navbar, Footer, UI Cards)
+│   ├── lib/               # Arsitektur Inti Aplikasi
+│   │   ├── config.ts      # IDENTITAS MEREK (Konfigurasi White-label)
+│   │   ├── assets.ts      # PUSAT ASET FOTO/VIDEO
+│   │   ├── data.ts        # DATABASE MOCKUP (Menu, Blog, dll)
+│   │   └── utils.ts       # Fungsi pembantu (Tailwind merge, dll)
+```
 
 ---
 
-Dibuat dengan ❤️ untuk **Warung Bambu Barokah**.
+Dibuat dengan ❤️ untuk kebutuhan Platform F&B Modern masa kini.
