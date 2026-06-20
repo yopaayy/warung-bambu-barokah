@@ -1,6 +1,6 @@
-# Educafe and Resto (ECR) - Enterprise DXP Platform
+# Edu Cafe And Resto (ECR) - Enterprise DXP Platform
 
-Selamat datang di repositori resmi **Educafe and Resto (ECR)**! 
+Selamat datang di repositori resmi **Edu Cafe And Resto (ECR)**! 
 Proyek ini adalah sebuah platform *Digital Experience (DXP)* modern bertaraf *Enterprise* yang dirancang khusus untuk industri Kuliner, Restoran, dan Eduwisata. 
 
 Sistem ini dirancang sebagai **White-Label Ready Template**, artinya Anda dapat dengan sangat mudah menjual atau mengkustomisasi platform ini untuk perusahaan lain (hanya dengan mengubah file konfigurasi terpusat).
